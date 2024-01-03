@@ -2,7 +2,10 @@ package com.devsuperior.bds02.controllers;
 
 import java.net.URI;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +30,11 @@ public class CityController {
 		dto = cityService.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
+	}
+	
+	@GetMapping
+	public ResponseEntity<Page<CityDTO>> findAll(Pageable pageable){
+		Page<CityDTO> page = cityService.findAll(pageable);
+		return ResponseEntity.ok().body(page);
 	}
 }

@@ -1,5 +1,7 @@
 package com.devsuperior.bds02.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.bds02.dto.CityDTO;
@@ -23,5 +25,10 @@ public class CityService {
 		entity = cityRepository.save(entity);
 		dto = mapper.toDTO(entity);
 		return dto;
+	}
+
+	public Page<CityDTO> findAll(Pageable pageable) {
+		Page<City> entity = cityRepository.findAll(pageable);
+		return entity.map((obj) -> mapper.toDTO(obj));
 	}
 }
