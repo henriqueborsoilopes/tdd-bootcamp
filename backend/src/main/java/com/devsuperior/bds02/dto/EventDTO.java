@@ -3,8 +3,6 @@ package com.devsuperior.bds02.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.devsuperior.bds02.entities.Event;
-
 public class EventDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,14 +21,6 @@ public class EventDTO implements Serializable {
 		this.date = date;
 		this.url = url;
 		this.cityId = cityId;
-	}
-	
-	public EventDTO(Event entity) {
-		id = entity.getId();
-		name = entity.getName();
-		date = entity.getDate();
-		url = entity.getUrl();
-		cityId = entity.getCity().getId();
 	}
 
 	public Long getId() {
