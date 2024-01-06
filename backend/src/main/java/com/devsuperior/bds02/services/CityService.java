@@ -25,7 +25,7 @@ public class CityService {
 		this.mapper = mapper;
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public CityDTO insert(CityDTO dto) {
 		City entity = mapper.toEntity(dto);
 		entity = cityRepository.save(entity);
